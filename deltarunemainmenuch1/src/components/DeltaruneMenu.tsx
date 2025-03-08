@@ -1,15 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import heartImage from "../assets/images/soul.png"; // Undertale/Deltarune soul image
 import selectItemSound from "../assets/soundeffects/snd_squeak.wav"; // Select item sound effect
-import selectedSound from "../assets/soundeffects/undertale-select-sound.mp3"; // Selected sound effect
+import selectedSound from "../assets/soundeffects/snd_select_ch1.wav"; // Selected sound effect
 
 const DeltaruneMenu = () => {
   const [selectedSlot, setSelectedSlot] = useState(0);
-  const slots = ["EMPTY", "EMPTY", "EMPTY"];
-  const slotDetails = ["___________", "___________", "___________"];
-  const slotTimes = ["--:--", "--:--", "--:--"];
+  const selectedSlotRef = useRef(selectedSlot);
+  const slots = ["EGG", "[EMPTY]", "[EMPTY]"];
+  const slotDetails = ["THE ROARING", "___________", "___________"];
+  const slotTimes = ["99:99", "--:--", "--:--"];
 
-  
+  useEffect(() => {
+    selectedSlotRef.current = selectedSlot;
+  }, [selectedSlot]);
 
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "ArrowUp") {
@@ -30,8 +33,11 @@ const DeltaruneMenu = () => {
       const audio = new Audio(selectItemSound);
       audio.volume = 0.2; // Set the volume lower
       audio.play();
-    } else if (e.key === "Enter") {
-      console.log("Selected slot:", selectedSlot);
+    } else if (e.key === "Enter" && slots[selectedSlotRef.current] !== "EMPTY") {
+      console.log("Selected slot:", selectedSlotRef.current);
+      const audio = new Audio(selectedSound);
+      audio.volume = 0.2; // Set the volume lower
+      audio.play();
     }
   };
 
@@ -51,7 +57,7 @@ const DeltaruneMenu = () => {
           </div>
           <div className="flex flex-col w-full pl-8">
             <div className="flex justify-between">
-              <span>[{slot}]</span>
+              <span>{slot}</span>
               <span>{slotTimes[index]}</span>
             </div>
             <div className="text-green-400">{slotDetails[index]}</div>
