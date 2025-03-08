@@ -6,9 +6,9 @@ import selectedSound from "../assets/soundeffects/snd_select_ch1.wav"; // Select
 const DeltaruneMenu = () => {
   const [selectedSlot, setSelectedSlot] = useState(0);
   const selectedSlotRef = useRef(selectedSlot);
-  const slots = ["EGG", "[EMPTY]", "[EMPTY]"];
-  const slotDetails = ["THE ROARING", "___________", "___________"];
-  const slotTimes = ["99:99", "--:--", "--:--"];
+  const slots = ["WING GASTER", "[EMPTY]", "[EMPTY]"];
+  const slotDetails = ["THE CORE", "___________", "___________"];
+  const slotTimes = ["666:666", "--:--", "--:--"];
   const links = ["https://www.youtube.com/watch?v=B5nmMDOHsjc", "", ""];
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const DeltaruneMenu = () => {
       const audio = new Audio(selectItemSound);
       audio.volume = 0.2; // Set the volume lower
       audio.play();
-    } else if (e.key === "Enter" && slots[selectedSlotRef.current] !== "EMPTY") {
+    } else if (e.key === "Enter" && (slots[selectedSlotRef.current] !== "[EMPTY]")) {
       console.log("Selected slot:", selectedSlotRef.current);
       const audio = new Audio(selectedSound);
       audio.volume = 0.2; // Set the volume lower
