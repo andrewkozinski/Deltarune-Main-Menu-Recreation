@@ -41,7 +41,13 @@ const DeltaruneMenu = () => {
       audio.play();
       window.open(links[selectedSlotRef.current], "_blank");
     }
+    else if (e.key === "Enter") {
+      const audio = new Audio(selectedSound);
+      audio.volume = 0.2; // Set the volume lower
+      audio.play();
+    }
   };
+  
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
