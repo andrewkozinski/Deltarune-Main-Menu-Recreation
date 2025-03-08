@@ -49,9 +49,9 @@ const DeltaruneMenu = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-black text-green-400 font-DeterminationMono">
+    <div className="flex flex-col items-center justify-center h-screen bg-black text-[#1be816]-400 font-DeterminationMono">
       {slots.map((slot, index) => (
-        <div key={index} className="border border-green-400 p-4 w-125 mb-2 flex items-center relative">
+        <div key={index} className="border border-[#1be816]-400 p-4 w-125 mb-2 flex items-center relative">
           <div className="absolute left-1.6 top-1/2 transform -translate-y-1/2 flex items-center">
             {selectedSlot === index && <img src={heartImage} alt="Heart" className="w-5 h-5 mr-2" />} 
           </div>
@@ -60,11 +60,11 @@ const DeltaruneMenu = () => {
               <span>{slot}</span>
               <span>{slotTimes[index]}</span>
             </div>
-            <div className="text-green-400">{slotDetails[index]}</div>
+            <div className="text-[#1be816]-400">{slotDetails[index]}</div>
           </div>
         </div>
       ))}
-      <div className="mt-4 flex gap-22 text-green-400">
+      <div className="mt-4 flex gap-22 text-[#1be816]-400">
         <span>COPY</span>
         <span>ERASE</span>
         <span>JAPANESE</span>
