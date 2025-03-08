@@ -9,6 +9,7 @@ const DeltaruneMenu = () => {
   const slots = ["EGG", "[EMPTY]", "[EMPTY]"];
   const slotDetails = ["THE ROARING", "___________", "___________"];
   const slotTimes = ["99:99", "--:--", "--:--"];
+  const links = ["https://www.youtube.com/watch?v=B5nmMDOHsjc", "", ""];
 
   useEffect(() => {
     selectedSlotRef.current = selectedSlot;
@@ -38,6 +39,7 @@ const DeltaruneMenu = () => {
       const audio = new Audio(selectedSound);
       audio.volume = 0.2; // Set the volume lower
       audio.play();
+      window.open(links[selectedSlotRef.current], "_blank");
     }
   };
 
