@@ -1,10 +1,22 @@
 import './App.css'
 import DeltaruneMenu from './components/DeltaruneMenu'
 import music from './assets/soundeffects/mainmenu.mp3'
+import bgMusic from './assets/soundeffects/mainmenu.mp3'
+import { useEffect } from 'react'
 
 function App() {
 
-  console.log(music)
+  useEffect(() => {
+    const audio = new Audio(bgMusic);
+    audio.loop = true;
+    audio.volume = 0.5; // Adjust volume as needed
+    audio.play().catch((error) => console.error("Audio play failed", error));
+
+    return () => {
+      audio.pause();
+      audio.currentTime = 0;
+    };
+  }, []);
 
   return (
     <>
