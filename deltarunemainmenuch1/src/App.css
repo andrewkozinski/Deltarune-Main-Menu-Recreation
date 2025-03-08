@@ -14,7 +14,8 @@
   justify-content: center;
   align-items: center;
   font-family: 'DeterminationMono', monospace;
-  color: #00ff00;
+  /*color: #00ff00;*/
+  color: #1be816;
   letter-spacing: 1px;
   font-size: 24px;
   user-select: none;
