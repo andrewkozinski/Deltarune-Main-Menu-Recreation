@@ -27,7 +27,7 @@ const DeltaruneMenu = () => {
       {slots.map((slot, index) => (
         <div key={index} className="border border-green-400 p-4 w-125 mb-2 flex items-center relative">
           <div className="absolute left-1.6 top-1/2 transform -translate-y-1/2 flex items-center">
-            {selectedSlot === index && <img src={heartImage} alt="Heart" className="w-5 h-5 mr-2" />} {/* Use the image */}
+            {selectedSlot === index && <img src={heartImage} alt="Heart" className="w-5 h-5 mr-2" />} 
           </div>
           <div className="flex flex-col w-full pl-8">
             <div className="flex justify-between">
