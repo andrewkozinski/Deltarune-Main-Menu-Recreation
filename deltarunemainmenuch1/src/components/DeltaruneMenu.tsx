@@ -1,11 +1,25 @@
 import { useState, useEffect } from "react";
 import heartImage from "../assets/images/soul.png"; // Undertale/Deltarune soul image
+import bgMusic from "../assets/soundeffects/mainmenu.mp3"; // Main menu background music
 
 const DeltaruneMenu = () => {
   const [selectedSlot, setSelectedSlot] = useState(0);
   const slots = ["EMPTY", "EMPTY", "EMPTY"];
   const slotDetails = ["___________", "___________", "___________"];
   const slotTimes = ["--:--", "--:--", "--:--"];
+
+  // Background music
+  useEffect(() => {
+    const audio = new Audio(bgMusic);
+    audio.loop = true;
+    audio.volume = 0.2; // Adjust volume as needed
+    audio.play().catch((error) => console.error("Audio play failed", error));
+
+    return () => {
+      audio.pause();
+      audio.currentTime = 0;
+    };
+  }, []);
 
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "ArrowUp") {
