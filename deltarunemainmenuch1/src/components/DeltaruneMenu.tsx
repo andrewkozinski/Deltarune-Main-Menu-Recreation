@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import heartImage from "../assets/images/soul.png"; // Undertale/Deltarune soul image
+import selectItemSound from "../assets/soundeffects/snd_squeak.wav"; // Select item sound effect
+import selectedSound from "../assets/soundeffects/undertale-select-sound.mp3"; // Selected sound effect
 
 const DeltaruneMenu = () => {
   const [selectedSlot, setSelectedSlot] = useState(0);
@@ -11,9 +13,23 @@ const DeltaruneMenu = () => {
 
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "ArrowUp") {
-      setSelectedSlot((prev) => (prev > 0 ? prev - 1 : slots.length - 1));
+      setSelectedSlot((prev) => {
+        const newSlot = prev > 0 ? prev - 1 : slots.length - 1;
+        console.log("ArrowUp pressed, new selectedSlot:", newSlot);
+        return newSlot;
+      });
+      const audio = new Audio(selectItemSound);
+      audio.volume = 0.2; // Set the volume lower
+      audio.play();
     } else if (e.key === "ArrowDown") {
-      setSelectedSlot((prev) => (prev < slots.length - 1 ? prev + 1 : 0));
+      setSelectedSlot((prev) => {
+        const newSlot = prev < slots.length - 1 ? prev + 1 : 0;
+        console.log("ArrowDown pressed, new selectedSlot:", newSlot);
+        return newSlot;
+      });
+      const audio = new Audio(selectItemSound);
+      audio.volume = 0.2; // Set the volume lower
+      audio.play();
     } else if (e.key === "Enter") {
       console.log("Selected slot:", selectedSlot);
     }
