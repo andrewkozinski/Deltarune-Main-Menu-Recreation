@@ -34,14 +34,14 @@ const DeltaruneMenu = () => {
       const audio = new Audio(selectItemSound);
       audio.volume = 0.2; // Set the volume lower
       audio.play();
-    } else if (e.key === "Enter" && (slots[selectedSlotRef.current] !== "[EMPTY]")) {
+    } else if ( (e.key === "Enter" || e.key === "z") && (slots[selectedSlotRef.current] !== "[EMPTY]")) {
       console.log("Selected slot:", selectedSlotRef.current);
       const audio = new Audio(selectedSound);
       audio.volume = 0.2; // Set the volume lower
       audio.play();
       window.open(links[selectedSlotRef.current], "_blank");
     }
-    else if (e.key === "Enter") {
+    else if (e.key === "Enter" || e.key === "z") {
       const audio = new Audio(selectedSound);
       audio.volume = 0.2; // Set the volume lower
       audio.play();
